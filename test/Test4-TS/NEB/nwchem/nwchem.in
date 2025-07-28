@@ -1,0 +1,29 @@
+start ni_singlepoint
+
+title "Ni complex single-point energy"
+
+memory total 10000 mb
+geometry units angstrom
+  load calc.xyz
+end
+
+basis
+  C library Ahlrichs_VDZ
+  H library Ahlrichs_VDZ
+  O library Ahlrichs_VDZ
+  N library Ahlrichs_VDZ
+  Ni library LANL2TZ
+end
+
+ecp
+  Ni library LANL2TZ
+end
+
+dft
+  xc wb97x-d3
+  mult 1
+  iterations 100
+  vectors input ni_singlepoint.movecs
+end
+
+task dft energy
